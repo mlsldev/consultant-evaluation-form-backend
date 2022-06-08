@@ -18,20 +18,16 @@ module.exports = (tableClient, func) => {
             const RetrieveUserInfo = new retrieveUserInfo(new userRepository(tableClient))
             await RetrieveUserInfo.run(userEmail).then(user => {
                 return func(context, req, user, tableClient)
-
             }).catch(error => {
                 if (error.toString().startsWith(`ReferenceError: userEmail is not defined`)) {
                     return func(context, req, new user(userEmail, []), tableClient)
                 } else {
-                    context.log.error(error)
-                    context.res = {
-                        status: 500,
-                        body: 'Something went wrong!'
-                    }
+                    throw error
                 }
             })
         } catch (error) {
             context.log.error(error)
+            
             context.res = {
                 status: 500,
                 body: 'Something went wrong!'
