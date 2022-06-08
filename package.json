@@ -1,0 +1,32 @@
+{
+  "name": "back-end",
+  "version": "1.0.0",
+  "description": "",
+  "jest": {
+    "reporters": [
+      "default",
+      "jest-junit"
+    ],
+    "collectCoverage": true,
+    "coverageReporters": [
+      "text",
+      "json",
+      "html",
+      "cobertura"
+    ]
+  },
+  "scripts": {
+    "start": "func start",
+    "test": "jest --coverage"
+  },
+  "dependencies": {
+    "@azure/data-tables": "^13.0.1",
+    "axios": "^0.26.1",
+    "azurite": "^3.16.0",
+    "jest": "^27.5.1",
+    "jest-junit": "^13.2.0",
+    "uuid": "^8.3.2",
+    "validator": "^13.7.0"
+  },
+  "devDependencies": {}
+}
